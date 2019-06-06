@@ -11,9 +11,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 
-    StudentModel studentModel = new StudentModel();
-    List<Student> list = new ArrayList<Student>();
-    list = studentModel.getListByAdmin();
+
+    HttpSession session1 = request.getSession();
+    Student student = (Student) session1.getAttribute("currentLogin");
 
 %>
 <html>
@@ -21,14 +21,14 @@
     <title>List Student</title>
 </head>
 <body>
-    <h1>List Student</h1>
+    UserName:<%=student.getUsername()%>
+    Fullname:<%=student.getFullName()%>
+    Address:<%=student.getAddress()%>
+    Email:<%=student.getEmail()%>
+    Phone:<%=student.getPhone()%>
 
    
 
-    <ul>
-        <% for(int i = 0; i < list.size(); i++){%>
-            <li><%= list.get(i).getFullName()%> - <%= list.get(i).getUsername()%></li>
-        <%}%>
-    </ul>
+
 </body>
 </html>
